@@ -34,11 +34,9 @@ public class TodoService {
     public Todo updateTodo(Todo todo){
         Todo findTodo = findVerifiedTodo(todo.getTodoId());
 
-        // (5) 이름 정보와 휴대폰 번호 정보 업데이트
         Optional.ofNullable(todo.isCompleted())
                 .ifPresent(completed -> findTodo.setCompleted(completed));
 
-        // (6) 회원 정보 업데이트
         return todoRepository.save(findTodo);
     }
 
